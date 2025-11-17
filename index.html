@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books by Zach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body
+    class="bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50 min-h-screen"
+  >
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-700 text-white shadow-2xl"
+    >
+      <div class="container mx-auto px-4 py-8">
+        <div class="flex items-center justify-center space-x-4">
+          <i class="fas fa-book-open text-5xl animate-pulse"></i>
+          <h1 class="text-5xl font-bold">Books by Zach</h1>
+          <i class="fas fa-feather-alt text-5xl animate-pulse"></i>
+        </div>
+        <p class="text-center mt-4 text-xl text-purple-100">
+          <i class="fas fa-star text-yellow-300"></i>
+          Discover Amazing Stories
+          <i class="fas fa-star text-yellow-300"></i>
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+      <div
+        id="books-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        <!-- Books will be dynamically inserted here -->
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gradient-to-r from-indigo-700 via-blue-600 to-purple-600 text-white py-8 mt-16"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a href="#" class="hover:text-yellow-300 transition"
+            ><i class="fab fa-twitter text-2xl"></i
+          ></a>
+          <a href="#" class="hover:text-yellow-300 transition"
+            ><i class="fab fa-facebook text-2xl"></i
+          ></a>
+          <a href="#" class="hover:text-yellow-300 transition"
+            ><i class="fab fa-instagram text-2xl"></i
+          ></a>
+          <a href="#" class="hover:text-yellow-300 transition"
+            ><i class="fab fa-goodreads text-2xl"></i
+          ></a>
+        </div>
+        <p class="text-lg">&copy; 2025 Zach - All Rights Reserved</p>
+        <p class="text-purple-200 mt-2">
+          <i class="fas fa-heart text-red-400"></i>
+          Happy Reading!
+          <i class="fas fa-heart text-red-400"></i>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // JSON data for books
+      const books = [
+        {
+          name: "Your Bible - A Quick Start",
+          link: "https://a.co/d/3eLzwq9",
+          description:
+            "Discover the Bible's Life-Changing Truths in One Comprehensive, Easy-to-Navigate Resource Ready to start studying the Bible but don't know where to begin? Want to understand what God's Word says about life's most important topics but feel overwhelmed? This complete guide removes every barrier between you and transformative Bible study. Designed for new believers, seekers, and anyone wanting to deepen their understanding of Scripture, this book organizes the Bible's essential teachings into clear, accessible sections.",
+          image:
+            "https://m.media-amazon.com/images/I/71UjPVfcWhL._AC_UY218_.jpg",
+        },
+        {
+          name: "2025 Bible Devotional - Living Hope",
+          link: "https://a.co/d/3ZpSmzh",
+          description:
+            "Daily devotional for 2025 focusing on living hope through Bible stories from Ecclesiastes, Isaiah, Jeremiah, Ezekiel, Daniel, Revelation, and Philippians.",
+          image: "https://m.media-amazon.com/images/I/712Jt7yQEDL._SY385_.jpg",
+        },
+        {
+          name: "What is Truth ? Repentance - Psalms 51: A Journey from Brokenness to Wholeness Part 1",
+          link: "https://a.co/d/3QLu3r8",
+          description:
+            "Explores repentance through Psalm 51, guiding from brokenness to wholeness.",
+          image: "https://m.media-amazon.com/images/I/61rMWChgO0L._AC_UY218_.jpg",
+        },
+        {
+          name: "From Exodus to Chains: Freedom’s Promise, Oppression’s Shadow",
+          link: "https://a.co/d/eT23vwx",
+          description:
+            "Examines biblical themes of freedom and oppression from Exodus to modern times.",
+          image: "https://m.media-amazon.com/images/I/71OCWar+l0L._AC_UY218_.jpg",
+        },
+        {
+          name: "What is Truth ?: The Mark of the Beast (Revelation 14:9-13)",
+          link: "https://a.co/d/d1QzS1K",
+          description: "Biblical study on the mark of the beast in Revelation.",
+          image: "https://m.media-amazon.com/images/I/61wuvoj9CQL._SY385_.jpg",
+        },
+        {
+          name: "Heaven Ready: Understanding the Times, Having Hope and Knowing What to Do",
+          link: "https://a.co/d/5wFpkHb",
+          description:            "Guidance on end times, hope, and actions for believers.",
+          image: "https://m.media-amazon.com/images/I/61jqh6Vaw7L._SY385_.jpg",
+        },
+        {
+          name: "Lost of the American Ideal of Liberty - Why Trump Won ?: Liberty of Conscience Matters in Voting and Policy , Don't be Manipulated",
+          link: "https://a.co/d/dl81Ec3",
+          description:
+            "Discusses loss of liberty, conscience in voting, and political manipulation.",
+          image: "https://m.media-amazon.com/images/I/71uKWt0ce4L._SY385_.jpg",
+        },
+        {
+          name: "Jude a Story of mercy, peace, and love",
+          link: "https://a.co/d/11CYAv8",
+          description:
+            "Study on the book of Jude emphasizing mercy, peace, and love.",
+          image: "https://m.media-amazon.com/images/I/51TTiQTgkLL._SL1500_.jpg",
+        },
+      ];
+
+      // Color schemes for book cards
+      const colorSchemes = [
+        {
+          bg: "from-purple-400 to-pink-500",
+          border: "border-purple-500",
+          button:
+            "from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700",
+        },
+        {
+          bg: "from-blue-400 to-cyan-500",
+          border: "border-blue-500",
+          button:
+            "from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700",
+        },
+        {
+          bg: "from-green-400 to-teal-500",
+          border: "border-green-500",
+          button:
+            "from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700",
+        },
+        {
+          bg: "from-orange-400 to-red-500",
+          border: "border-orange-500",
+          button:
+            "from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700",
+        },
+        {
+          bg: "from-indigo-400 to-purple-500",
+          border: "border-indigo-500",
+          button:
+            "from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700",
+        },
+        {
+          bg: "from-pink-400 to-rose-500",
+          border: "border-pink-500",
+          button:
+            "from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700",
+        },
+      ];
+
+      // Render books
+      function renderBooks() {
+        const container = document.getElementById("books-container");
+
+        books.forEach((book, index) => {
+          const colors = colorSchemes[index % colorSchemes.length];
+
+          const bookCard = `
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-3xl border-4 ${colors.border}">
+                        <!-- Book Image with Gradient Overlay -->
+                        <div class="relative h-80 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t ${colors.bg} opacity-20"></div>
+                            <img src="${book.image}" alt="${book.name}" class="w-full h-full object-contain">
+                            <div class="absolute top-4 right-4 bg-white rounded-full p-3 shadow-lg">
+                                <i class="fas fa-bookmark text-2xl bg-gradient-to-r ${colors.bg} bg-clip-text text-transparent"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Book Details -->
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <i class="fas fa-book text-2xl mr-3 bg-gradient-to-r ${colors.bg} bg-clip-text text-transparent"></i>
+                                <h2 class="text-2xl font-bold text-gray-800">${book.name}</h2>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                <i class="fas fa-quote-left text-sm text-gray-400 mr-1"></i>
+                                ${book.description}
+                                <i class="fas fa-quote-right text-sm text-gray-400 ml-1"></i>
+                            </p>
+                            
+                            <!-- Rating Stars -->
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="ml-2 text-gray-600 text-sm">(5.0)</span>
+                            </div>
+                            
+                            <!-- Buy Button -->
+                            <a href="${book.link}" target="_blank" 
+                               class="block w-full text-center bg-gradient-to-r ${colors.button} text-white font-bold py-3 px-6 rounded-xl transition duration-300 transform hover:-translate-y-1 shadow-lg">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                Buy Now
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+          container.innerHTML += bookCard;
+        });
+      }
+
+      // Initialize
+      renderBooks();
+    </script>
+  </body>
+</html>
